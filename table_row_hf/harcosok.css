@@ -1,0 +1,38 @@
+table,td,tr {
+    color:yellow;
+    background-color: grey;
+    border: 1px solid goldenrod;
+    font-size: medium;
+    border-collapse: collapse;
+}
+tr td:last-child {
+    background-color: purple;
+}
+tr td:nth-last-child(3){
+    background-color: aqua;
+}
+tr:has(td[rowspan]):hover td{
+    background-color: yellowgreen;
+    color: darkblue;
+    font-size: 20px;
+}
+tr:has(td[rowspan]):hover + tr td{
+    background-color: yellowgreen;
+    color: darkblue;
+    font-size: 20px;
+}
+tr:has(td[rowspan]):has(+tr:hover) td{
+    background-color: yellowgreen;
+    color: darkblue;
+    font-size: 20px;
+}
+tr:has(td[rowspan]):has(+tr:hover) +tr td{
+    background-color: yellowgreen;
+    color: darkblue;
+    font-size: 20px;
+}
+tr:not(:has(td[rowspan]))+ tr:not(:has(td[rowspan])):hover td{
+    background-color: yellowgreen;
+    color: darkblue;
+    font-size: 20px;
+}
