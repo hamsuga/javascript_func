@@ -1,10 +1,8 @@
-table,td,tr {
-    color:yellow;
-    background-color: grey;
-    border: 1px solid goldenrod;
-    font-size: medium;
-    border-collapse: collapse;
+table tr td th {
+	border:1px dotted black;
+	border-collapse:collapse;
 }
+
 tr td:last-child {
     background-color: purple;
 }

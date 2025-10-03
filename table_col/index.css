@@ -1,5 +1,5 @@
 table,thead,tr,td,th {
-    border: 1px solid black;
+    border: 2px dotted green;
     border-collapse: collapse;
 }
 th {
@@ -11,8 +11,8 @@ table thead~tbody>tr{
 table tbody>tr{
     background-color: blueviolet;
 }
-tbody tr:nth-child(2n) {
-    background-color: greenyellow;
+tbody tr:nth-child(2n-1) {
+    background-color: lightblue;
 }
 tbody tr:hover{
     background-color: cadetblue;
