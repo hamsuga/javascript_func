@@ -54,8 +54,11 @@ for(const c of arr) {
     tbody.appendChild(tr1)
     const td1=document.createElement("td")
     tr1.appendChild(td1)
-    const tr2=cocument.createElement("td")
+    td1.innerText=arr.theme;
+    const td2=cocument.createElement("td")
     tr1.appendChild(tr2)
+    td2.innerText=arr.time;
     const td3=document.createElement("td")
     tr1.appendChild(td3)
+    td3.innerText=arr.scientist1;
 }
