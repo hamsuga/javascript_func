@@ -50,12 +50,19 @@ const tbody = document.createElement("tbody");
 table.appendChild(tbody);
 
 for(const c of arr) {
-    const tr1 =document.createElement("tr")
-    tbody.appendChild(tr1)
-    const td1=document.createElement("td")
-    tr1.appendChild(td1)
-    const tr2=cocument.createElement("td")
-    tr1.appendChild(tr2)
-    const td3=document.createElement("td")
-    tr1.appendChild(td3)
+    const tr1 =document.createElement("tr");
+    tbody.appendChild(tr1);
+    const td1=document.createElement("td");
+    tr1.appendChild(td1);
+    td1.innerText= (theme);
+    const td2=cocument.createElement("td");
+    tr1.appendChild(td2);
+    td2.innerText(time);
+    const td3=document.createElement("td");
+    tr1.appendChild(td3);
+    if (arr.scientist2 == undefined) {
+        const td7 = createElement(td)
+        tr1.appendChild(td7)
+        td7.innerText = arr.scientist2;
+    }
 }
