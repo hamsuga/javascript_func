@@ -66,3 +66,14 @@ for (const valami of array) {
         td3.colSpan = 2
     }
 }
+/**
+ * letrehozz egy table elemet amit hozza add egy sor hoz
+ * @param {string} celltype - td,th legyen
+ * @param {string} cellcontent - mi legyen benne
+ * @param {HTMLTableRowElement} cellrow -sor hoz kapcsoljuk hozza
+ */
+function createCellElement(celltype,cellcontent,cellrow) {
+    const cela = document.createElement(celltype)
+    cela.innerText=cellcontent
+    cellrow.appendChild(cela)
+}
