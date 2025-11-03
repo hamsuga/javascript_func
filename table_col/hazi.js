@@ -88,3 +88,59 @@ function createCellElement(celltype,cellcontent,cellrow) {
     cellrow.appendChild(cela)
     return cela;
 }
+
+
+
+//Hf
+//forms letrehozasa
+const form = document.createElement('form');
+form.id = 'form_js';
+document.body.appendChild(form);
+
+//h2 elem letrehozasa es hozza adasa
+const h2 = document.createElement('h2'); 
+h2.innerText = 'Javascript form';
+form.appendChild(h2);
+
+//segedfuggveny
+/**
+ * @param {string} labeltext - label szovege
+ * @param {string} inputtype - tipus
+ * @param {string} inputid - id
+ * @param {HTMLElement} form - melyikhez adjuk hozza
+ */
+function createInputField(labeltext, inputtype, inputid, form) {
+    const label = document.createElement('label'); //label
+    label.htmlFor = inputid; //id
+    label.innerText = labeltext; //szoveg
+    form.appendChild(label); //hozza adas
+
+    //1.sortores csinalasa
+    const br1 = document.createElement('br');
+    form.appendChild(br1);
+
+    const input = document.createElement('input');
+    input.type = inputtype; //tipus
+    input.id = inputid; // id
+    input.name = inputid; // name
+    form.appendChild(input); // hozza adas
+    
+    //2.sortores csinalasa
+    const br2 = document.createElement('br');
+    form.appendChild(br2);
+
+    //3.sortores csinalasa
+    const br3 = document.createElement('br');
+    form.appendChild(br3);
+}
+
+//input mezok csinalasa
+createInputField('Költő neve:', 'text', 'kolto_nev', form); //1 input
+createInputField('Korszak:', 'text', 'korszak', form); //2 input
+createInputField('Szerelme:', 'text', 'szerelem1', form); //3 input
+createInputField('Szerelme:', 'text', 'szerelem2', form); //4 input
+
+//gomb csinalasa es hozza adasa
+const button = document.createElement('button'); 
+button.innerText = 'Hozzáadás'; 
+form.appendChild(button); 
