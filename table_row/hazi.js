@@ -44,11 +44,17 @@ for (let a of t)
     th.innerText = a
 }
 const tbody = document.createElement("tbody")
+tbody.id = "valami"
 table.appendChild(tbody)
-
-for (let b of arr) {
+/**
+ * @type {{nemz:string,szerzo:string,mu:string,szerzo1?:string,mu1?:string}[]}
+ */
+function renderTableBody(arr){
+    const tbodyfunction = document.getElementById("valami")
+    tbody.innerHTML = "";
+    for (let b of arr) {
     const tr1 = document.createElement("tr")
-    tbody.appendChild(tr1)
+    tbodyfunction.appendChild(tr1)
 
 
     const td = document.createElement("td")
@@ -69,7 +75,8 @@ for (let b of arr) {
         if (el !== null) {
             valami.classList.remove("marked") //torolunk
         }
-            valami.classList.add("marked") //hozza addunk   
+
+        valami.classList.add("marked") //hozza addunk   
     })
     tr1.appendChild(td)
 
@@ -95,8 +102,10 @@ for (let b of arr) {
         tr2.appendChild(td4)
 
         td.rowSpan = '2'
-    }
+    }    
 }
+}
+renderTableBody(arr)
 
 const valami3000 = document.getElementById("htmlform")
 valami3000.addEventListener("submit", function(e) {
@@ -156,9 +165,9 @@ valami3000.addEventListener("submit", function(e) {
      */
     const objektum = {}
     objektum.nemz = nemzetisegerteke;
-    objektum.szerzo = szerzogerteke;
+    objektum.szerzo = szerzoerteke;
     objektum.mu = muerteke;
-    objektum.szerzo1 = szerzo1egerteke;
+    objektum.szerzo1 = szerzo1erteke;
     objektum.mu1 = mu1erteke;
 
 
@@ -194,3 +203,90 @@ valami3000.addEventListener("submit", function(e) {
         td.rowSpan = '2'
     }
 })
+
+const form = document.createElement("jsform")
+form.id = "jsform"
+document.body.appendChild(form)
+/**
+ * @param {HTMLFormElement}
+ * @param {string}
+ * @param {string}
+ */
+function createFormElement(form,id,labelContent) {
+    const label = document.createElement("label")
+    form.appendChild(label)
+    label.htmlFor = id
+    label.innerText = labelContent
+
+    const input = document.createElement("input")
+    form.appendChild(input)
+    input.id = id
+
+    const jsform = document.getElementById("jsform")
+    jsform.addEventListener("submit", function(e) {
+        e.preventDefault(); // meggatolja az alapertelmezet mukodest
+        const mehmehmeh = e.target
+
+    /**
+     * @type {HTMLInputElement}
+     */
+    const nemzetiseg = mehmehmeh.querySelector("#nemzetiseg")
+    /**
+     * @type {string}
+     */
+    const nemzetisegerteke = nemzetiseg.value
+
+    /**
+     * @type {HTMLInputElement}
+     */
+    const szerzo = mehmehmeh.querySelector("#szerzo1")
+    /**
+     * @type {string}
+     */
+    const szerzoerteke = szerzo.value
+    /**
+     * @type {HTMLInputElement}
+     */
+    const mu = mehmehmeh.querySelector("#mu1")
+        /**
+     * @type {string}
+     */
+    const muerteke = mu.value
+
+    /**
+     * @type {HTMLInputElement}
+     */
+    const szerzo1 = mehmehmeh.querySelector("#szerzo2")
+        /**
+     * @type {string}
+     */
+    const szerzo1erteke = szerzo1.value
+
+    /**
+     * @type {HTMLInputElement}
+     */
+    const mu1= mehmehmeh.querySelector("#mu2")
+        /**
+     * @type {string}
+     */
+    const mu1erteke = mu1.value
+
+
+    /**
+     * @type {nemz:string,szerzo:string,mu:string,szerzo1?:string,mu1?:string}
+     */    
+    const objektum1 = {}
+    objektum1.nemz = nemzetisegerteke;
+    objektum1.szerzo = szerzoerteke;
+    objektum1.mu = muerteke;
+    objektum1.szerzo1 = szerzo1erteke;
+    objektum1.mu1 = mu1erteke;
+    arr.push(objektum1)
+    renderTablebody(arr)
+    })
+}
+createFormElement(form,"nemzetiseg","Nemzetiség:")
+createFormElement(form,"szerzo1","Szerző:")
+createFormElement(form,"mu1","Mű:")
+createFormElement(form,"szerzo2","Másik Szerző:")
+createFormElement(form,"mu2","Mű:")
