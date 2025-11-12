@@ -50,8 +50,27 @@ for (let b of arr) {
     const tr1 = document.createElement("tr")
     tbody.appendChild(tr1)
 
+
     const td = document.createElement("td")
     td.innerText = b.nemz
+    
+    td.addEventListener("click",function(e){ //az elso parameter egy string es a masodik pedig egy fugveny (callback) aminek a parametere az e
+        /**
+         * @type {HTMLTableCellElement} 
+        */
+        const valami = e.target //elkerjuk a tulajdonsagat es elrakja a valtozoba
+        valami.classList.add("marked") //css osztalybol a marked osztalyt hozza adjuk igy lesz a szin teal
+
+        const valami1 = valami.parentElement
+        const tbody = valami1.parentElement
+
+        const el = tbody.querySelector(".marked"); // vissza adja az elso elemet ami megegyezik a css selectorral ha nem talal akkor null lesz
+        
+        if (el !== null) {
+            valami.classList.remove("marked") //torolunk
+        }
+            valami.classList.add("marked") //hozza addunk   
+    })
     tr1.appendChild(td)
 
     const td1 = document.createElement("td")

@@ -36,3 +36,8 @@ tr:has(td[rowspan]):has(+tr:hover) td{
 tr:has(td[rowspan]):has(+tr:hover) +tr td{
     background-color: rosybrown;
 }
+
+/*orai munka*/
+.marked {
+    color:teal;
+}
