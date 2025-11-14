@@ -8,6 +8,14 @@
  * @param {string} labelContent 
  */
 function createFormElement(form,id,labelContent) {
+    const div = document.createElement("div");
+    form.appendChild(div)
+    //classtest error message
+    const span = document.createElement("span")
+    span.classList.add("error")
+    div.appendChild(span)
+
+
     const label = document.createElement("label")
     form.appendChild(label)
     label.htmlFor = id
@@ -222,11 +230,13 @@ function htmlformEventListener(e) {
      * @type {{CountryWriters}}
      */
     const objektum = {}
-    objektum.nemz = nemzetisegerteke;
+    if (validateFields(nemzetiseg,szerzo,mu)){
+         objektum.nemz = nemzetisegerteke;
     objektum.szerzo = szerzoerteke;
     objektum.mu = muerteke;
     objektum.szerzo1 = szerzo1erteke;
     objektum.mu1 = mu1erteke;
+    }
 
 
     const tabla =document.getElementById("tablebody")
@@ -265,4 +275,20 @@ function htmlformEventListener(e) {
 
         td.rowSpan = '2'
     }
+}
+/**
+ * 
+ * @param {HTMLInputElement} inputfield1 
+ * @param {HTMLInputElement} inputfield2 
+ * @param {HTMLInputElement} inputfield3 
+ */
+function validateFields(inputfield1,inputfield2,inputfield3) {
+    let valid = true;
+    if (inputfield1.value == "") {
+        const parentdiv = inputfield1.parentElement;
+        const a=parentdiv.querySelector(".error")
+        a.innerText = "mezo kitoltese kotelezo!"
+        valid = false;
+    }
+    return valid;
 }
