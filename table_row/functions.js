@@ -25,68 +25,6 @@ function createFormElement(form,id,labelContent) {
     form.appendChild(input)
     input.id = id
 
-    const jsform = document.getElementById("jsform")
-    jsform.addEventListener("submit", function(e) {
-        e.preventDefault(); // meggatolja az alapertelmezet mukodest
-        const mehmehmeh = e.target
-
-    /**
-     * @type {HTMLInputElement}
-     */
-    const nemzetiseg = mehmehmeh.querySelector("#nemzetiseg")
-    /**
-     * @type {string}
-     */
-    const nemzetisegerteke = nemzetiseg.value
-
-    /**
-     * @type {HTMLInputElement}
-     */
-    const szerzo = mehmehmeh.querySelector("#szerzo1")
-    /**
-     * @type {string}
-     */
-    const szerzoerteke = szerzo.value
-    /**
-     * @type {HTMLInputElement}
-     */
-    const mu = mehmehmeh.querySelector("#mu1")
-        /**
-     * @type {string}
-     */
-    const muerteke = mu.value
-
-    /**
-     * @type {HTMLInputElement}
-     */
-    const szerzo1 = mehmehmeh.querySelector("#szerzo2")
-        /**
-     * @type {string}
-     */
-    const szerzo1erteke = szerzo1.value
-
-    /**
-     * @type {HTMLInputElement}
-     */
-    const mu1= mehmehmeh.querySelector("#mu2")
-        /**
-     * @type {string}
-     */
-    const mu1erteke = mu1.value
-
-
-    /**
-     * @type {{CountryWriters}}
-     */    
-    const objektum1 = {}
-    objektum1.nemz = nemzetisegerteke;
-    objektum1.szerzo = szerzoerteke;
-    objektum1.mu = muerteke;
-    objektum1.szerzo1 = szerzo1erteke;
-    objektum1.mu1 = mu1erteke;
-    arr.push(objektum1)
-    renderTablebody(arr)
-    })
 }
 
 /**
@@ -291,4 +229,51 @@ function validateFields(inputfield1,inputfield2,inputfield3) {
         valid = false;
     }
     return valid;
+}
+function renderTableBody(arr){
+    const tbodyfunction = document.getElementById("valami")
+    tbody.innerHTML = "";
+    for (let b of arr) {
+        renderTableRow(tbodyfunction,b)
+    }
+}
+//hf 
+/**
+ * 
+ * @param {id} id 
+ * @param {string[]} tomb 
+ * @returns {HTMLFormElement}
+ */
+function generateform(id,tomb) { //form csinalas
+    const form = document.createElement("form")
+    form.id = id;
+
+    for (let valtozo of tomb) {
+        createFormElement(form,valtozo.id,valtozo.label)
+    }
+
+    const gomb = document.createElement("button")
+    gomb.innerText = "gomb"
+    form.appendChild(gomb)
+
+    return form; // vissza adja a formot
+}
+/**
+ * 
+ * @param {string[]} headerList 
+ * @param {string} tbodyId 
+ * @returns {table}
+ */
+function generateTable(headerList, tbodyId) {
+    const table = document.createElement("table");
+
+    generateHeader(table, headerList);
+
+    const tbody = document.createElement('tbody');
+    tbody.id = tbodyId;
+    table.appendChild(tbody);
+
+    document.body.appendChild(table);
+
+    return table;
 }
