@@ -30,6 +30,38 @@ const arr = [
         mu:"A fizikusok",
     }
 ]
+/**
+ * @typedef {{id:string,label:string}} FormField
+ */
+/**
+ * @type {{headerlist:string[],formfieldek:FormField[]}}
+ */
+const tomb3000 = {
+    headerlist : ["nemzetiség","szerző","mű"],
+    formfieldek : [
+    {
+        id : "nemzetiseg",
+        label: "nemzetiseg"
+    },
+    {
+        id: "szerzo",
+        label:"szerzo"
+    },
+    {
+        id:"mu",
+        label:"mu"
+    },
+    {
+        id:"mu1",
+        label:"mu1"
+    },
+    {
+        id:"szerzo1",
+        label:"szerzo"
+    }
+]
+}
+
 const table= document.createElement("table")
 document.body.appendChild(table)
 
@@ -74,6 +106,11 @@ const jsform = document.getElementById("jsform")
     jsform.addEventListener("submit", function(e) {
         e.preventDefault(); // meggatolja az alapertelmezet mukodest
         const mehmehmeh = e.target
+        const errors = mehmehmeh.querySelectorAll('.error')
+        for(const a of errors)
+        {
+            a.innerText = '';
+        }
 
     /**
      * @type {HTMLInputElement}
@@ -118,7 +155,10 @@ const jsform = document.getElementById("jsform")
      * @type {string}
      */
     const mu1erteke = mu1.value
-
+    if(!validateFields(Nemzetiseg,Szerzo1,Mu1))
+        {
+            return;
+        }
 
     /**
      * @type {{CountryWriters}}

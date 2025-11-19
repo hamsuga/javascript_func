@@ -92,6 +92,7 @@ function renderTableRow(tablebody,CountryWriters){
     parentrow.appendChild(cela)
     return cela;
 }
+
 /**
  * 
  * @param {HTMLTableElement} table 
@@ -172,8 +173,8 @@ function htmlformEventListener(e) {
          objektum.nemz = nemzetisegerteke;
     objektum.szerzo = szerzoerteke;
     objektum.mu = muerteke;
-    objektum.szerzo1 = szerzo1erteke;
-    objektum.mu1 = mu1erteke;
+    objektum.szerzo1 = szerzo1erteke !== '' ? Szerzo1erteke : undefined;
+    objektum.mu1 = mu1erteke !== '' ? mu1erteke : undefined;
     }
 
 
@@ -222,10 +223,13 @@ function htmlformEventListener(e) {
  */
 function validateFields(inputfield1,inputfield2,inputfield3) {
     let valid = true;
-    if (inputfield1.value == "") {
-        const parentdiv = inputfield1.parentElement;
-        const a=parentdiv.querySelector(".error")
-        a.innerText = "mezo kitoltese kotelezo!"
+    if(!validateField(inputfield1,"A mező kitöltése kötelező")) {
+        valid = false;
+    }
+    if(!validateField(inputfield2,"A mező kitöltése kötelező")) {
+        valid = false;
+    }
+    if(!validateField(inputfield3,"A mező kitöltése kötelező")) {
         valid = false;
     }
     return valid;
@@ -266,8 +270,7 @@ function generateform(id,tomb) { //form csinalas
  */
 function generateTable(headerList, tbodyId) {
     const table = document.createElement("table");
-
-    generateHeader(table, headerList);
+    generateheader(table, headerList);
 
     const tbody = document.createElement('tbody');
     tbody.id = tbodyId;
@@ -276,4 +279,20 @@ function generateTable(headerList, tbodyId) {
     document.body.appendChild(table);
 
     return table;
+}
+/**
+ * 
+ * @param {HTMLInputElement} inputField 
+ * @param {string} innerText 
+ * @returns 
+ */
+function validateField(inputField, innerText) {
+    let valid = true;
+    if (inputField.value == "") {
+        const parentdiv = inputField.parentElement;
+        const a=parentdiv.querySelector(".error")
+        a.innerText = innerText;
+        valid = false;
+    }
+    return valid;
 }
